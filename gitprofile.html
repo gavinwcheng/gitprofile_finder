@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">      <!--character set encoding of html document-->
+  </head>
+
+  <body>
+    <form class="gitprofile">     <!--class .gitprofile in jquery-->
+      <input class="username" placeholder="Enter GitHub username">    <!--placeholder is a sample of the expected value of the input-->
+      <button type="submit">Load</button>
+    </form>
+
+    <main class="container">    <!--main tag - main content of document - should NOT contain repeated code ie.a side bar, nav links, search .etc-->
+    </main>
+
+    <template>      <!--the html template is a mechanism for holding client-side content that is not to be rendered when a page is loaded but may subsequently be instantiated during runtime using JavaScript-->
+      <article class="profile">     <!--the <article> tag specifies independent, self-contained content. An article should make sense on its own and it should be possible to distribute it independently from the rest of the site-->
+        <section class="pic">
+        <img src={{avatar_url}}>
+        </section>
+
+        <section class="stats">
+        <a href={{html_url}}>{{login}}</a>
+
+        Repos: {{public_repos}}
+        Followers: {{followers}}
+
+        </section>
+      </article>
+    </template>
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>   <!--jquery code-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>      <!--{{mustache}} - logicless tags - {{variable}} stored in hash {'variable': 'value'} - http://mustache.github.io/mustache.5.html-->
+  <script src="js/gitprofile.js"></script>
+  <script src="js/access_token.js"></script>
+
+  </body>
+</html>
