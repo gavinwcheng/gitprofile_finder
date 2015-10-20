@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" ng-app="GitUserSearch">
+  <head>
+    <meta charset="utf-8">
+    <title>GITHUB USER SEARCH</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/gitUserSearchController.js"></script>
+  </head>
+
+  <body ng-controller="GitUserSearchController as searchCtrl">  <!--controller as - http://stackoverflow.com/questions/21287794/angularjs-controller-as-syntax-clarification-->
+    <div>
+      <form class="form-horizontal">
+        <input type="text" ng-model="searchCtrl.searchTerm" >   <!--assigning input text value as value in json object with searchTerm as the key-->
+        <button class="btn" ng-click="searchCtrl.doSearch()">Search</button>
+      </form>
+      <ul class="list-group">
+        <li ng-repeat="user in searchCtrl.searchResult.items">  <!-- 'user' works like |user| in ruby iteration - looks through json hash -  searchCtrl.searchResult.items - ng-repeat is angular directive that behaves like a for loop ie. it iterates over every user in the items array-->
+          <img ng-src="{{user.avatar_url}}&s=50">     <!--{{}} - using mustache gives access to varibales outside current scope and runs javascript code within the html. ng-src sets src attribute if image in angular format -->
+          <a ng-href="{{user.html_url}}">{{user.login}}</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
